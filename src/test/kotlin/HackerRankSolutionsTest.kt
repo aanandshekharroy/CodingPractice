@@ -6,6 +6,9 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.runner.RunWith
+import java.io.PrintStream
+
+
 
 @RunWith(JUnitParamsRunner::class)
 class HackerRankSolutionsTest {
@@ -45,4 +48,14 @@ class HackerRankSolutionsTest {
             arrayOf(arrayOf(arrayOf(11,2,4), arrayOf(4,5,6), arrayOf(10,8,-12)),15),
             arrayOf(arrayOf(arrayOf(11,2), arrayOf(4,5)),10),
             arrayOf(arrayOf(arrayOf(11)),0))
+
+    @Test
+    @Parameters(method = "dataPlusMinus")
+    fun plusMinus(arr: Array<Int>, result: String) {
+        assertEquals(result, hackerRankSolutions.plusMinus(arr))
+    }
+
+    fun dataPlusMinus() = arrayOf(
+            arrayOf(arrayOf(-4,3,-9,0,4,1),"0.500000 0.333333 0.166667")
+    )
 }

@@ -28,4 +28,26 @@ class HackerRankSolutions {
         return Math.abs(leftDiagonalSum - rightDiagonalSum)
 
     }
+
+    // Complete the plusMinus function below.
+    fun plusMinus(arr: Array<Int>){
+        var positives = 0
+        var negatives = 0
+        var zeroes = 0
+        arr.forEach {
+            when{
+                it > 0 -> positives++
+                it < 0 -> negatives++
+                it == 0 -> zeroes++
+            }
+        }
+        println("${positives.toFloat()/arr.size}\n${negatives.toFloat()/arr.size}\n${zeroes.toFloat()/arr.size}")
+    }
+
+    fun staircase(n: Int) {
+        for(i in 0..n){
+            var spaces = ""
+        }
+
+    }
 }
