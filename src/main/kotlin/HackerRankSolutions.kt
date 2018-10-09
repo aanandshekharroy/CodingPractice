@@ -45,9 +45,53 @@ class HackerRankSolutions {
     }
 
     fun staircase(n: Int) {
-        for(i in 0..n){
-            var spaces = ""
+        for(i in 0 until n){
+            val spaces = buildString {
+                for( j in 0 until  (n-i-1)){
+                     append(" ")
+                }
+            }
+            val stars = buildString {
+                append(spaces)
+                for(k in 0 until (i+1)){
+                    append("#")
+                }
+            }
+            println(stars)
         }
+    }
+
+    // Complete the angryProfessor function below.
+    fun angryProfessor(k: Int, a: Array<Int>): String {
+        var arrivedOnTime = 0
+        a.forEach {
+            when{
+                it<=0 -> arrivedOnTime++
+            }
+        }
+        return if(arrivedOnTime>=k){
+            "NO"
+        }else{
+            "YES"
+        }
+    }
+
+    fun miniMaxSum(arr: Array<Int>) {
+        val total:Long = arr.sum().toLong()
+        var minSum:Long = total
+        var maxSum:Long = -1
+        arr.forEach{
+            val sumExceptThis = total - it
+            if(sumExceptThis>maxSum){
+                maxSum = sumExceptThis
+            }
+            if(sumExceptThis<minSum){
+                minSum = sumExceptThis
+            }
+        }
+        println("$minSum $maxSum")
+//        return arrayOf(minSum, maxSum)
 
     }
+
 }

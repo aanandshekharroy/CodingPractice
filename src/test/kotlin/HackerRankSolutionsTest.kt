@@ -1,28 +1,25 @@
 import junitparams.JUnitParamsRunner
 import junitparams.Parameters
-import org.hamcrest.core.Is.`is`
 import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.runner.RunWith
-import java.io.PrintStream
-
 
 
 @RunWith(JUnitParamsRunner::class)
 class HackerRankSolutionsTest {
 
-    lateinit var hackerRankSolutions: HackerRankSolutions
+    lateinit var mHackerRankSolutions: HackerRankSolutions
     @Before
     fun setUp() {
-        hackerRankSolutions = HackerRankSolutions()
+        mHackerRankSolutions = HackerRankSolutions()
     }
 
     @Test
     @Parameters(method = "getSomeIntArr")
     fun compareTriplets(a: Array<Int>, b: Array<Int> , score: Array<Int>) {
-        assertEquals(score, hackerRankSolutions.compareTriplets(a, b))
+        assertEquals(score, mHackerRankSolutions.compareTriplets(a, b))
     }
 
     fun getSomeIntArr() = arrayOf(arrayOf(arrayOf(1,2), arrayOf(3,4), arrayOf(0,2)),
@@ -33,7 +30,7 @@ class HackerRankSolutionsTest {
     @Test
     @Parameters(method = "dataForAVeryBigSum")
     fun aVeryBigSum(a: Array<Long>, sum:Long) {
-        assertEquals(sum, hackerRankSolutions.aVeryBigSum(a))
+        assertEquals(sum, mHackerRankSolutions.aVeryBigSum(a))
     }
 
     fun dataForAVeryBigSum() = arrayOf(arrayOf(arrayOf<Long>(1000000001, 1000000002, 1000000003, 1000000004, 1000000005),5000000015))
@@ -41,7 +38,7 @@ class HackerRankSolutionsTest {
     @Test
     @Parameters(method = "datadiagonalDifference")
     fun diagonalDifference(arr: Array<Array<Int>>,diff: Int) {
-        assertEquals(diff, hackerRankSolutions.diagonalDifference(arr))
+        assertEquals(diff, mHackerRankSolutions.diagonalDifference(arr))
     }
 
     fun datadiagonalDifference() = arrayOf(
@@ -52,10 +49,34 @@ class HackerRankSolutionsTest {
     @Test
     @Parameters(method = "dataPlusMinus")
     fun plusMinus(arr: Array<Int>, result: String) {
-        assertEquals(result, hackerRankSolutions.plusMinus(arr))
+        assertEquals(result, mHackerRankSolutions.plusMinus(arr))
     }
 
     fun dataPlusMinus() = arrayOf(
             arrayOf(arrayOf(-4,3,-9,0,4,1),"0.500000 0.333333 0.166667")
     )
+
+    @Test
+    @Parameters(method = "dataAngryProfessor")
+    fun angryProfessor(a: Array<Int>, k: Int, result: String) {
+        assertEquals(result,mHackerRankSolutions.angryProfessor(k, a))
+    }
+
+    fun dataAngryProfessor() = arrayOf(
+            arrayOf(arrayOf(-1, -3, 4, 2),3, "YES"),
+            arrayOf(arrayOf(-1, -3, -1, 0),1, "NO"),
+            arrayOf(arrayOf(0, 0, 0, 0),3, "NO"),
+            arrayOf(arrayOf(-1, -3, 4, 2),3, "YES")
+    )
+
+    @Test
+    @Parameters(method = "dataMiniMaxSum")
+    fun miniMaxSum(arr: Array<Int>, sol: Array<Long>) {
+        assertEquals(sol, mHackerRankSolutions.miniMaxSum(arr))
+    }
+
+    fun dataMiniMaxSum() = arrayOf(
+            arrayOf(arrayOf(1, 2, 3, 4, 5), arrayOf(10, 14))
+    )
+
 }
