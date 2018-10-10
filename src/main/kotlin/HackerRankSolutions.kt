@@ -140,4 +140,31 @@ class HackerRankSolutions {
         return treeHeight
     }
 
+    /*
+    * Complete the gradingStudents function below.
+    */
+    fun gradingStudents(grades: Array<Int>): Array<Int> {
+        /*
+         * Write your code here.
+         */
+        val result = Array(grades.size) { i -> 0 }
+        for (i in 0 until result.size){
+            when {
+                grades[i]<38 -> result[i] = grades[i]
+                grades[i]%5>=3 -> result[i]=(grades[i]+(5-grades[i]%5))
+                else -> result[i]=grades[i]
+            }
+        }
+        return result
+
+    }
+    fun hurdleRace(k: Int, height: Array<Int>): Int{
+        val maxHeight = height.max()
+        if(k>= maxHeight!!){
+            return 0
+        }
+        return maxHeight-k
+    }
+
+
 }

@@ -103,4 +103,15 @@ class HackerRankSolutionsTest {
             arrayOf(4,7)
     )
 
+    @Test
+    @Parameters(method = "datagradingStudents")
+    fun gradingStudents(grades: Array<Int>, result: Array<Int>) {
+        assertEquals(result, mHackerRankSolutions.gradingStudents(grades))
+    }
+
+    fun datagradingStudents() = arrayOf(
+            arrayOf(arrayOf(73,67,38,33),arrayOf(75,67,40,33)),
+            arrayOf(arrayOf(75,37,41,49),arrayOf(75,37,41,50))
+    )
+
 }
