@@ -79,4 +79,28 @@ class HackerRankSolutionsTest {
             arrayOf(arrayOf(1, 2, 3, 4, 5), arrayOf(10, 14))
     )
 
+    @Test
+    @Parameters(method = "dataTimeConversion")
+    fun timeConversion(input:String, result: String) {
+        assertEquals(result, mHackerRankSolutions.timeConversion(input))
+    }
+
+    fun dataTimeConversion() = arrayOf(
+            arrayOf("07:25:45PM","19:25:45"),
+            arrayOf("12:00:00AM","00:00:00"),
+            arrayOf("12:00:00PM","12:00:00")
+    )
+
+    @Test
+    @Parameters(method = "dataUtopianTree")
+    fun utopianTree(n: Int, result: Int) {
+        assertEquals(result, mHackerRankSolutions.utopianTree(n))
+    }
+
+    fun dataUtopianTree() = arrayOf(
+            arrayOf(0,1),
+            arrayOf(1,2),
+            arrayOf(4,7)
+    )
+
 }

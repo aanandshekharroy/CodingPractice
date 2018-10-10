@@ -93,5 +93,51 @@ class HackerRankSolutions {
 //        return arrayOf(minSum, maxSum)
 
     }
+    fun timeConversion(input: String): String {
+
+//    if ()
+
+        var hours = 0
+        val inputWithoutAMPM = if(input.contains("PM")){
+            hours+=12
+            if(input.startsWith("12")){
+                return input.removeSuffix("PM")
+            }
+            input.removeSuffix("PM")
+        }else{
+            if(input.startsWith("12")){
+                hours+=12
+            }
+            input.removeSuffix("AM")
+        }
+//        hours %= 24
+        val units = inputWithoutAMPM.split(":")
+        val inputHours = units[0].toInt()
+        val result = buildString {
+            val finalHours = (inputHours+hours)%24
+            if(finalHours<10){
+                append("0$finalHours")
+            }else{
+                append(finalHours)
+            }
+            append(":")
+            append(units[1])
+            append(":")
+            append(units[2])
+        }
+        return result
+    }
+    // Complete the utopianTree function below.
+    fun utopianTree(n: Int): Int {
+        var treeHeight = 1
+        for( i in 1 until n+1){
+            if(i%2==1){
+                treeHeight*=2
+            }else{
+                treeHeight+=1
+            }
+        }
+        return treeHeight
+    }
 
 }
