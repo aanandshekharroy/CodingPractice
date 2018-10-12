@@ -114,4 +114,15 @@ class HackerRankSolutionsTest {
             arrayOf(arrayOf(75,37,41,49),arrayOf(75,37,41,50))
     )
 
+    @Test
+    @Parameters(method = "dataCountingValleys")
+    fun countingValleys(n: Int, hike: String, count: Int) {
+        assertEquals(count, mHackerRankSolutions.countingValleys(n, hike))
+    }
+
+    fun dataCountingValleys() = arrayOf(
+            arrayOf(8, "UDDDUDUU", 1),
+            arrayOf(8, "UUDDDDUU", 1)
+    )
+
 }

@@ -166,5 +166,26 @@ class HackerRankSolutions {
         return maxHeight-k
     }
 
+    // Complete the countingValleys function below.
+    fun countingValleys(n: Int, s: String): Int {
+        var altitude = 0
+        var countOfValleys = 0
+        s.forEach {
+            when(it){
+                'U' ->{
+                    altitude++
+                    if(altitude==0){
+                        countOfValleys++
+                    }
+                }
+                'D' ->{
+                    altitude--
+                }
+            }
+        }
+        return countOfValleys
+    }
+
+
 
 }
