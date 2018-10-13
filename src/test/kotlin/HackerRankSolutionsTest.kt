@@ -125,4 +125,27 @@ class HackerRankSolutionsTest {
             arrayOf(8, "UUDDDDUU", 1)
     )
 
+    @Test
+    @Parameters(method = "dataDesignerPdfViewer")
+    fun countingDesignerPdfViewer(h: Array<Int>, word: String, area: Int) {
+        assertEquals(area, mHackerRankSolutions.designerPdfViewer(h, word))
+    }
+
+    fun dataDesignerPdfViewer() = arrayOf(
+            arrayOf(arrayOf(1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7), "abc", 9),
+            arrayOf(arrayOf(1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7), "zaba", 28)
+    )
+
+    @Test
+    @Parameters(method = "dataFindDigits")
+    fun findDigits(n: Int, result: Int) {
+        assertEquals(result, mHackerRankSolutions.findDigits(n))
+    }
+
+    fun dataFindDigits() = arrayOf(
+            arrayOf(12,2),
+            arrayOf(1012, 3)
+    )
+
+
 }

@@ -186,6 +186,33 @@ class HackerRankSolutions {
         return countOfValleys
     }
 
+    // Complete the designerPdfViewer function below.
+    fun designerPdfViewer(h: Array<Int>, word: String): Int {
+        var max = -1
+        word.forEach {
+            if(max<(h[it-'a'])){
+                max = h[it-'a']
+            }
+        }
+        return max*word.length
+
+    }
+
+    fun findDigits(n: Int): Int {
+
+        val charArr = n.toString().toCharArray()
+        var countOfDivisors = 0
+        charArr.forEach {
+           if(it!='0'){
+               if(n%(it-'0')==0){
+                   countOfDivisors++
+               }
+           }
+        }
+        return countOfDivisors
+    }
+
+
 
 
 }
