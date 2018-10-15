@@ -167,6 +167,33 @@ class HackerRankSolutionsTest {
             arrayOf(arrayOf(1,2,3,4,3,3,2,1),arrayOf(8,6,4,1))
     )
 
+    @Test
+    @Parameters(method = "dataBeautifulTriplets")
+    fun beautifulTriplets(d: Int, arr: Array<Int>, result: Int) {
+        assertEquals(result, mHackerRankSolutions.beautifulTriplets(d,arr))
+    }
+
+    fun dataBeautifulTriplets() = arrayOf(
+            arrayOf(1,arrayOf(2,2,3,4,5),3)
+    )
+
+    @Test
+    @Parameters(method = "dataTaumBday")
+    fun taumBday(b: Long, w:Long, bc: Long, wc:Long, z: Long, result: Long) {
+        assertEquals(result, mHackerRankSolutions.taumBday(b,w,bc,wc,z))
+    }
+
+    fun dataTaumBday() = arrayOf(
+            arrayOf(27984,1402,619246,615589,247954, 18192035842),
+            arrayOf(5,9,2,3,4,37),
+            arrayOf(3,6,9,1,1,12),
+            arrayOf(3,3,1,9,2,12),
+            arrayOf(7,7,4,2,1,35),
+            arrayOf(860,605,274229, 795307, 2153,403048050),
+            arrayOf(657,327,861981,46769,513320,383271936),
+            arrayOf(384 ,887,2778,6916,7794, 7201244),
+            arrayOf(27984,1402,619246,615589,247954, 18192035842)
+    )
 
 
 }

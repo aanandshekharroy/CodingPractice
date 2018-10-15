@@ -269,8 +269,62 @@ class HackerRankSolutions {
             cLikes[i]=cLikes[i-1]+liked[i]
         }
          return cLikes[n]
+    }
 
+    // Complete the beautifulTriplets function below.
+    /*given i,j,k such that i<j<k
+    *a[j]-a[i]=a[k]-a[j]=d
+    * 2a[j]=a[k]+a[i]=d
+    * a[j]=d/2, a[i]+a[k]=d
+    *
+    * */
+    fun beautifulTriplets(d: Int, a: Array<Int>): Int {
+        var i=0
+        var j= 1
+        var k = 2
+        var result= 0
+        if(a.size<3){
+            return 0
+        }
+        while (true){
+            when {
+                a[j]-a[i]>d -> i++
+                a[j]-a[i]<d -> j++
+                else -> when {
+                    a[k]-a[j]>d -> j++
+                    a[k]-a[j]<d -> k++
+                    else ->{
 
+                        result++
+                        i++
+                    }
+                }
+            }
+            if(i==j){
+                j++
+            }
+            if(j==k){
+                k++
+            }
+            if(i==a.size||j==a.size||k==a.size){
+                break
+            }
+        }
+        return result
+    }
+
+    // Complete the taumBday function below.
+    fun taumBday(b: Long, w: Long, bc: Long, wc: Long, z: Long): Long {
+        val isBToWFeasible = bc>(wc+z)
+        val isWToBFeasible = wc>(bc+z)
+        if(!isBToWFeasible&&!isWToBFeasible){
+            return b*bc+w*wc
+        }
+        return if(isBToWFeasible){
+            w*wc+(b*(wc+z))
+        }else{
+            b*bc+(w*(bc+z))
+        }
     }
 
 
