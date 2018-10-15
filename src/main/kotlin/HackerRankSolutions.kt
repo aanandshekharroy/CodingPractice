@@ -211,6 +211,67 @@ class HackerRankSolutions {
         }
         return countOfDivisors
     }
+    // Complete the permutationEquation function below.
+    fun permutationEquation(p: Array<Int>): Array<Int> {
+        val set = mutableSetOf<Int>()
+        val result = mutableListOf<Int>()
+        p.forEach {
+            set.add(it)
+        }
+        for( i in 0 until p.size){
+            if(set.contains(p[p[i]-1])){
+                result.add(i+1)
+            }
+        }
+        return result.toTypedArray()
+    }
+    // Complete the cutTheSticks function below.
+    fun cutTheSticks(arr: Array<Int>): Array<Int> {
+        arr.sort()
+        arr.forEach {
+
+        }
+        var sticks = mutableListOf<Int>()
+        val result = mutableListOf<Int>()
+        arr.forEach {
+            sticks.add(it)
+        }
+        while (sticks.size>0){
+            result.add(sticks.size)
+
+            val minLength = sticks.min()?:0
+            sticks = sticks.map {
+                it - minLength
+            }.toMutableList()
+            sticks.removeIf {
+                it==0
+            }
+
+        }
+        return result.toTypedArray()
+    }
+
+    // Complete the viralAdvertising function below.
+    fun viralAdvertising(n: Int): Int {
+
+        val shared = Array(n+1){0}
+        val liked = Array(n+1){0}
+        val cLikes = Array(n+1){0}
+        shared[1] = 5
+        liked[1] = 2
+        cLikes[1]=2
+        for(i in 2 until n+1){
+            shared[i] = 3*(liked[i-1])
+            liked[i] = shared[i]/2
+        }
+
+        for(i in 2 until n+1){
+            cLikes[i]=cLikes[i-1]+liked[i]
+        }
+         return cLikes[n]
+
+
+    }
 
 
 

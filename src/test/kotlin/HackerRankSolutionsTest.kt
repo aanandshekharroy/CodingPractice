@@ -147,5 +147,26 @@ class HackerRankSolutionsTest {
             arrayOf(1012, 3)
     )
 
+    @Test
+    @Parameters(method = "datapermutationEquation")
+    fun permutationEquation(p: Array<Int>, result: Array<Int>) {
+        assertEquals(result, mHackerRankSolutions.permutationEquation(p))
+    }
+
+    fun datapermutationEquation() = arrayOf(
+            arrayOf(arrayOf(4,3,5,1,2),arrayOf(1,3,5,4,2))
+    )
+
+    @Test
+    @Parameters(method = "datacutTheSticks")
+    fun cutTheSticks(input: Array<Int>, result: Array<Int>) {
+        assertEquals(result, mHackerRankSolutions.cutTheSticks(input))
+    }
+
+    fun datacutTheSticks() = arrayOf(
+            arrayOf(arrayOf(1,2,3,4,3,3,2,1),arrayOf(8,6,4,1))
+    )
+
+
 
 }
