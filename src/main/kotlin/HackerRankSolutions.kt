@@ -328,6 +328,11 @@ class HackerRankSolutions {
     }
 
 
+    // Complete the reverseArray function below.
+    fun reverseArray(a: Array<Int>): Array<Int> {
+        return a.reversedArray()
+
+    }
 
 
 }
