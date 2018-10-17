@@ -195,5 +195,39 @@ class HackerRankSolutionsTest {
             arrayOf(27984,1402,619246,615589,247954, 18192035842)
     )
 
+    @Test
+    @Parameters(method = "dataKangaroo")
+    fun kangaroo(x1:Int, v1:Int, x2:Int, v2:Int, result: String) {
+        assertEquals(result, mHackerRankSolutions.kangaroo(x1,v1,x2,v2))
+    }
+
+    fun dataKangaroo() = arrayOf(
+            arrayOf(0,2,5,3,"NO"),
+            arrayOf(0,3,4,2,"YES")
+    )
+
+    @Test
+    @Parameters(method = "dataPickingNumber")
+    fun pickingNumber(a: Array<Int>, result: Int) {
+        assertEquals(result, mHackerRankSolutions.pickingNumbers(a))
+    }
+
+    fun dataPickingNumber() = arrayOf(
+            arrayOf(arrayOf(1,2,2,3,1,2),5),
+            arrayOf(arrayOf(4,6,5,3,3,1),3)
+    )
+
+    @Test
+    @Parameters(method = "dataRepeatedString")
+    fun repeatedString(s: String, n: Long, result: Long) {
+        assertEquals(result, mHackerRankSolutions.repeatedString(s,n))
+    }
+
+    fun dataRepeatedString() = arrayOf(
+            arrayOf("a",10,10),
+            arrayOf("aba", 10 ,7),
+            arrayOf("a",1000000000000,1000000000000)
+    )
+
 
 }

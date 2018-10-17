@@ -1,3 +1,4 @@
+import com.sun.scenario.effect.impl.prism.PrRenderInfo
 
 class HackerRankSolutions {
     fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
@@ -334,5 +335,58 @@ class HackerRankSolutions {
 
     }
 
+    // Complete the kangaroo function below.
+    fun kangaroo(x1: Int, v1: Int, x2: Int, v2: Int):String{
+        val x1_x2= x1-x2
+        val v2_v1 = v2-v1
+        return if((x1_x2<0&&v2_v1<0)||(x1_x2>0&&v2_v1>0)){
+            if(x1_x2%v2_v1==0){
+                "YES"
+            }else{
+                "NO"}
+        }else{
+            "NO"
+        }
+    }
+    fun pickingNumbers(a: Array<Int>): Int {
+        // Write your code here
+        a.sort()
+//        a.forEach {
+//            println(it)
+//        }
+        var maxSubsequent = 1
+        var i =0
+        var j = 1
+        while (i<a.size&&j<a.size){
+//            println("a[$i] = ${a[i]}, a[$j] = ${a[j]}, max = $maxSubsequent")
+            if(a[j]-a[i]<=1){
+                if(maxSubsequent<(j-i+1)){
+                    maxSubsequent = j-i+1
+                }
+                j++
+            }else{
+                i++
+            }
+            if(i==j){
+                j++
+            }
+        }
+
+        return maxSubsequent
+    }
+
+    // Complete the repeatedString function below.
+    fun repeatedString(s: String, n: Long): Long {
+
+        val countOfAInS  = s.count {
+            it=='a'
+        }
+        val multiples = n/s.length
+        val remainder = n%(s.length)
+
+        return (multiples*countOfAInS)+(s.substring(0, remainder.toInt()).count {
+            it=='a'
+        })
+    }
 
 }
