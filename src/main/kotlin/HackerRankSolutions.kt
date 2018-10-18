@@ -389,4 +389,40 @@ class HackerRankSolutions {
         })
     }
 
+    // Complete the minimumDistances function below.
+    fun minimumDistances(a: Array<Int>): Int {
+        var minDis = a.size + 1
+        val map = mutableMapOf<Int, Int>()
+        for(i in 0 until a.size){
+            if(!map.contains(a[i])){
+                map[a[i]] = i
+            }else{
+                map[a[i]]?.let {
+                    if(i - it<minDis){
+                        minDis = i - it
+                    }
+                    map[a[i]] = i
+                }
+            }
+        }
+        if(minDis==a.size+1){
+            return -1
+        }
+        return minDis
+    }
+
+    // Complete the chocolateFeast function below.
+    fun chocolateFeast(n: Int, c: Int, m: Int): Int {
+        val chocolatesByMoney = n/c
+        var wrappers = chocolatesByMoney
+        var totalChocolate = chocolatesByMoney
+        while (wrappers/m>=1){
+            totalChocolate+=(wrappers/m)
+            val remainder = wrappers%m
+            wrappers /= m
+            wrappers+=remainder
+        }
+        return totalChocolate
+    }
+
 }

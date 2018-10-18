@@ -229,5 +229,26 @@ class HackerRankSolutionsTest {
             arrayOf("a",1000000000000,1000000000000)
     )
 
+    @Test
+    @Parameters(method = "dataMinimumDistances")
+    fun minimumDistances(a: Array<Int>, result: Int) {
+        assertEquals(result, mHackerRankSolutions.minimumDistances(a))
+    }
+    fun dataMinimumDistances() = arrayOf(
+            arrayOf(arrayOf(7,1,3,4,1,7),3)
+    )
+
+    @Test
+    @Parameters(method = "dataChocolateFeast")
+    fun chocolateFeast(n: Int, c: Int, m: Int, result: Int) {
+        assertEquals(result, mHackerRankSolutions.chocolateFeast(n,c,m))
+    }
+
+    fun dataChocolateFeast() = arrayOf(
+            arrayOf(10,2,5,6),
+            arrayOf(12,4,4,3),
+            arrayOf(6,2,2,5)
+    )
+
 
 }
