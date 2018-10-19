@@ -250,5 +250,14 @@ class HackerRankSolutionsTest {
             arrayOf(6,2,2,5)
     )
 
+    @Test
+    @Parameters(method = "dataServiceLane")
+    fun serviceLane(n: Int, cases: Array<Array<Int>>, result: Array<Int>, width: Array<Int> ) {
+        assertEquals(result, mHackerRankSolutions.serviceLane(n, cases,width))
+    }
+    fun dataServiceLane() = arrayOf(
+            arrayOf(8, arrayOf(arrayOf(0,3),arrayOf(4,6),arrayOf(6,7), arrayOf(3,5),arrayOf(0,7)), arrayOf(1,2,3,2,1),arrayOf(2 ,3 ,1 ,2, 3, 2, 3, 3))
+    )
+
 
 }

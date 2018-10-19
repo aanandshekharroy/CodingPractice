@@ -1,64 +1,29 @@
-import java.io.*
-import java.math.*
-import java.security.*
-import java.text.*
 import java.util.*
-import java.util.concurrent.*
-import java.util.function.*
-import java.util.regex.*
-import java.util.stream.*
-import kotlin.collections.*
-import kotlin.comparisons.*
-import kotlin.io.*
-import kotlin.jvm.*
-import kotlin.jvm.functions.*
-import kotlin.jvm.internal.*
-import kotlin.ranges.*
-import kotlin.sequences.*
-import kotlin.text.*
-fun cavityMap(grid: Array<String>): Array<String> {
-//println("start")
-//    if(grid.size<=4){
-//        return grid
-//    }
-//    println()
-    val dimen = (grid.size.toDouble()).toInt()
-    for(i in 1 until grid.size){
-        val upIndex = i - dimen
-        val leftIndex = i - 1
-        val rightIndex = i + 1
-        val downIndex = i + dimen
-        if(upIndex>0&&downIndex<grid.size&&(i%dimen!=0)&&(i+1)%dimen!=0
-                &&(grid[upIndex]!="X"&&grid[downIndex]!="X"&&grid[leftIndex]!="X"&&grid[rightIndex]!="X")){
-            if(grid[upIndex].toInt()<grid[i].toInt()&&
-                    grid[downIndex].toInt()<grid[i].toInt()&&
-                    grid[leftIndex].toInt()<grid[i].toInt()&&
-                    grid[rightIndex].toInt()<grid[i].toInt()){
-                grid[i]="X"
-            }
-        }
-    }
-    println("printing")
-    grid.forEach {
-        print("printing: "+ it+"  ")
-    }
-    return grid
-}
+
+// Complete the serviceLane function below.
+fun serviceLane(n: Int, cases: Array<Array<Int>>, width: Array<Int>): Array<Int> {
 
 
+return arrayOf(1)}
 
 fun main(args: Array<String>) {
     val scan = Scanner(System.`in`)
 
-    val n = scan.nextLine().trim().toInt()
+    val nt = scan.nextLine().split(" ")
 
-    val grid = Array<String>(n, { "" })
-    for (i in 0 until n) {
-        val gridItem = scan.nextLine()
-        grid[i] = gridItem
+    val n = nt[0].trim().toInt()
+
+    val t = nt[1].trim().toInt()
+
+    val width = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
+
+    val cases = Array<Array<Int>>(t, { Array<Int>(2, { 0 }) })
+
+    for (i in 0 until t) {
+        cases[i] = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
     }
 
-    val result = cavityMap(grid)
+    val result = serviceLane(n, cases, width)
 
     println(result.joinToString("\n"))
 }

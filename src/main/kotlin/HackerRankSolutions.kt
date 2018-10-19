@@ -1,5 +1,3 @@
-import com.sun.scenario.effect.impl.prism.PrRenderInfo
-
 class HackerRankSolutions {
     fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
         var aScore = 0
@@ -425,4 +423,28 @@ class HackerRankSolutions {
         return totalChocolate
     }
 
+    // Complete the serviceLane function below.
+    fun serviceLane(n: Int, cases: Array<Array<Int>>, width: Array<Int>): Array<Int> {
+val result = mutableListOf<Int>()
+        cases.forEach {
+            var min = 7
+            val low = it[0]
+            val hi = it[1]
+            for(i in low until hi+1){
+                if(min>width[i]){
+                    min = width[i]
+                }
+            }
+            result.add(min)
+
+        }
+        return result.toTypedArray()
+    }
+
+    // Complete the camelcase function below.
+    fun camelcase(s: String): Int {
+        return s.filter {
+            it==it.toUpperCase()
+        }.count()+1
+    }
 }
