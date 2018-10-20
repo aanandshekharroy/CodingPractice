@@ -447,4 +447,29 @@ val result = mutableListOf<Int>()
             it==it.toUpperCase()
         }.count()+1
     }
+
+//    20 3 6 80
+
+
+    // Complete the howManyGames function below.
+    fun howManyGames(p: Int, d: Int, m: Int, totalMoney: Int): Int {
+        // Return the number of games you can buy
+        var games = 0
+        var lastSoldAt = -1
+        var remainingMoney = totalMoney
+        while(remainingMoney-m>=0){
+            val toBeSoldAt = if(lastSoldAt==-1){
+                p
+            }else{
+                Math.max(lastSoldAt -d,m)
+            }
+            if(remainingMoney-toBeSoldAt>=0){
+                lastSoldAt = toBeSoldAt
+                games++
+            }
+            remainingMoney-=toBeSoldAt
+        }
+        return games
+    }
+
 }

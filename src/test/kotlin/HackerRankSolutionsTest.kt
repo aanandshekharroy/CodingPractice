@@ -259,5 +259,15 @@ class HackerRankSolutionsTest {
             arrayOf(8, arrayOf(arrayOf(0,3),arrayOf(4,6),arrayOf(6,7), arrayOf(3,5),arrayOf(0,7)), arrayOf(1,2,3,2,1),arrayOf(2 ,3 ,1 ,2, 3, 2, 3, 3))
     )
 
+    @Test
+    @Parameters(method = "dataHowManyGames")
+    fun howManyGames(p:Int, d: Int, m: Int, s: Int, result: Int) {
+        assertEquals(result, mHackerRankSolutions.howManyGames(p,d,m,s))
+    }
+fun dataHowManyGames() = arrayOf(
+        arrayOf(20,3,6,85,7),
+        arrayOf(20,3,6,80,6),
+        arrayOf(16 ,2, 1, 9981,9917)
+)
 
 }
