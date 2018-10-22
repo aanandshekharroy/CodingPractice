@@ -1,3 +1,5 @@
+import kotlin.math.min
+
 class HackerRankSolutions {
     fun compareTriplets(a: Array<Int>, b: Array<Int>): Array<Int> {
         var aScore = 0
@@ -472,4 +474,114 @@ val result = mutableListOf<Int>()
         return games
     }
 
+    // Complete the timeInWords function below.
+    fun timeInWords(h: Int, m: Int): String {
+        val hoursToPrint = getHoursToPrint(h, m)
+        val minuteDescription = getMinuteDescription(m)
+        val result = combineHoursAndMinuteDescription(hoursToPrint, minuteDescription)
+        return result
+
+//        val minuteDescription =
+
+//        return ""
+    }
+
+    private fun combineHoursAndMinuteDescription(hoursToPrint: Int, minuteDescription: String): String {
+        return when{
+            minuteDescription.contains("o' clock") -> getWordsFromNumber(hoursToPrint)+" "+minuteDescription
+            minuteDescription.contains("half past") -> minuteDescription+" "+getWordsFromNumber(hoursToPrint)
+            minuteDescription.contains("quarter past")-> minuteDescription+" "+getWordsFromNumber(hoursToPrint)
+            minuteDescription.contains("quarter to") -> minuteDescription+" "+getWordsFromNumber(hoursToPrint)
+            minuteDescription.contains("past") -> minuteDescription+" "+getWordsFromNumber(hoursToPrint)
+            minuteDescription.contains("to") -> minuteDescription+" "+getWordsFromNumber(hoursToPrint)
+            else -> throw IllegalArgumentException(" ded")
+        }
+    }
+
+    private fun getMinuteDescription(m: Int): String {
+        return when (m) {
+            0 -> "o' clock"
+            30 -> "half past"
+            15 -> "quarter past"
+            45 -> "quarter to"
+            1 -> "one minute past"
+            in 2..29 -> "${getWordsFromNumber(m)} minutes past"
+            in 31..59 -> "${getWordsFromNumber(60-m)} minutes to"
+            else -> throw IllegalArgumentException("$m is invalid? ")
+        }
+    }
+
+    private fun getHoursToPrint(h: Int, m: Int): Int {
+        return when(m){
+            in 0..30 -> h
+            in 31..59 -> {
+                if(h<12){
+                    h+1
+                }else{
+                    1
+                }
+            }
+            else -> throw IllegalArgumentException("$h is invalid? ")
+        }
+    }
+
+    private fun getWordsFromNumber(n: Int): String {
+        val onesPlace = n%10
+        val tensPlace = n/10
+        var onesPlaceInWord = when(onesPlace){
+            1 -> "one"
+            2 -> "two"
+            3 -> "three"
+            4 -> "four"
+            5 -> "five"
+            6 -> "six"
+            7 -> "seven"
+            8 -> "eight"
+            9 -> "nine"
+            0 -> ""
+            else -> ""
+        }
+        val tensPlaceInWord :String= when(tensPlace){
+            0 -> ""
+            1 -> {
+                onesPlaceInWord = ""
+            when(onesPlace){
+                0 -> "ten"
+                1 -> "eleven"
+                2 -> "twelve"
+                3 -> "thirteen"
+                4 -> "fourteen"
+                5 -> "fifteen"
+                6 -> "sixteen"
+                7 -> "seventeen"
+                8 -> "eighteen"
+                9 -> "nineteen"
+                else -> ("")
+            }
+
+            }
+            2 -> "twenty"
+            3 -> "thirty"
+            4 -> "forty"
+            5 -> "fifty"
+            else -> throw IllegalArgumentException(" Shouldn't have ")
+        }
+        return (tensPlaceInWord+" "+ onesPlaceInWord).trim()
+
+    }
+    // Complete the equalizeArray function below.
+    fun equalizeArray(arr: Array<Int>): Int {
+
+        val itemCount = mutableMapOf<Int, Int>()
+        arr.forEach {
+            itemCount[it] =itemCount[it]?.plus(1)?:1
+        }
+
+        var minDeletion = arr.size
+        itemCount.forEach { key, value ->
+//            println("key: $key, val: $value")
+            minDeletion = Math.min(arr.size-value, minDeletion)
+        }
+        return minDeletion
+    }
 }

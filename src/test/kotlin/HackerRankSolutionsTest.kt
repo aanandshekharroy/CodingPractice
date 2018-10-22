@@ -264,10 +264,36 @@ class HackerRankSolutionsTest {
     fun howManyGames(p:Int, d: Int, m: Int, s: Int, result: Int) {
         assertEquals(result, mHackerRankSolutions.howManyGames(p,d,m,s))
     }
-fun dataHowManyGames() = arrayOf(
-        arrayOf(20,3,6,85,7),
-        arrayOf(20,3,6,80,6),
-        arrayOf(16 ,2, 1, 9981,9917)
-)
+    fun dataHowManyGames() = arrayOf(
+            arrayOf(20,3,6,85,7),
+            arrayOf(20,3,6,80,6),
+            arrayOf(16 ,2, 1, 9981,9917)
+    )
+    @Test
+    @Parameters(method = "dataTimeInWords")
+    fun timeInWords(h: Int, m: Int, result: String){
+
+        assertEquals(result, mHackerRankSolutions.timeInWords(h,m))
+    }
+
+    fun dataTimeInWords() = arrayOf(
+            arrayOf(7,15,"quarter past seven"),
+            arrayOf(3,0,"three o' clock"),
+            arrayOf(5,28,"twenty eight minutes past five"),
+            arrayOf(5,30,"half past five"),
+            arrayOf(5, 47, "thirteen minutes to six"),
+            arrayOf(1,1,"one minute past one")
+
+    )
+
+    @Test
+    @Parameters(method = "dataEqualizeArray")
+    fun equalizeArray(arr: Array<Int>, result: Int){
+        assertEquals(result, mHackerRankSolutions.equalizeArray(arr))
+    }
+    fun dataEqualizeArray() = arrayOf(
+            arrayOf(arrayOf(3,3,2,1,3),2)
+    )
+
 
 }
