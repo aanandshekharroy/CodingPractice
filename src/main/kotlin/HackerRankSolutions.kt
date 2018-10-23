@@ -1,3 +1,4 @@
+import kotlin.math.max
 import kotlin.math.min
 
 class HackerRankSolutions {
@@ -579,9 +580,95 @@ val result = mutableListOf<Int>()
 
         var minDeletion = arr.size
         itemCount.forEach { key, value ->
-//            println("key: $key, val: $value")
+            println("key: $key, val: $value")
             minDeletion = Math.min(arr.size-value, minDeletion)
         }
         return minDeletion
     }
+
+    // Complete the happyLadybugs function below.
+    fun happyLadybugs(b: String): String {
+        val charArr = b.toCharArray()
+        if(b.contains('_')){
+            charArr.sort()
+        }
+        var areAllHappy = true
+        charArr.forEachIndexed { index, c ->
+            if(index==0){
+                if(index+1<charArr.size){
+                    if(charArr[index+1]!=charArr[index]){
+                        areAllHappy=false
+                        return@forEachIndexed
+                    }
+                }
+            }
+            else if(index==charArr.size-1){
+                if(index-1>=0&&charArr[index]!=charArr[index-1]&&c!='_'){
+                    areAllHappy = false
+                    return@forEachIndexed
+                }
+            }
+            else if(c!='_'&&!((charArr[index]==charArr[index-1])||(charArr[index]==charArr[index+1]))){
+                areAllHappy = false
+                return@forEachIndexed
+            }
+        }
+        if(b.length==1){
+            if(b[0]!='_'){
+                areAllHappy = false
+            }
+        }
+        return if(areAllHappy){
+            "YES"
+        }else{
+            "NO"
+        }
+
+    }
+
+
+    // Complete the breakingRecords function below.
+    fun breakingRecords(scores: Array<Int>): Array<Int> {
+        var maxScore = scores[0]
+        var minScore = scores[0]
+        var brokeMaxScoreRecord = 0
+        var brokeMinScoreRecord = 0
+        for( i in 1 until scores.size){
+            scores[i].let {
+                if(maxScore<it){
+                    maxScore = it
+                    brokeMaxScoreRecord++
+                }
+                if(minScore>it){
+                    minScore = it
+                    brokeMinScoreRecord++
+                }
+            }
+        }
+        return arrayOf(brokeMaxScoreRecord, brokeMinScoreRecord)
+    }
+
+
+    // Complete the birthday function below.
+//    fun birthday(s: Array<Int>, d: Int, m: Int): Int {
+//        if(s.size<m){
+//            return 0
+//        }
+//        var startIndex = 0
+//        var endIndex = 0
+//        var contiguousSum = 0
+//        var result = 0
+//        while(m<s.size){
+//            if(endIndex - startIndex+1!=m){
+//                contiguousSum+=
+//            }else if(end){
+//
+//                if(contiguousSum==d){
+//                    result++
+//                }
+//                contiguousSum = 0
+//            }
+//        }
+//        return 0
+//    }
 }

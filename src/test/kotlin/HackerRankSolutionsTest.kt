@@ -295,5 +295,46 @@ class HackerRankSolutionsTest {
             arrayOf(arrayOf(3,3,2,1,3),2)
     )
 
+    @Test
+    @Parameters(method = "dataHappyLadyBugs")
+    fun happyLadybugs(b: String, result: String){
+        assertEquals(result,mHackerRankSolutions.happyLadybugs(b))
+    }
+
+    fun dataHappyLadyBugs() = arrayOf(
+            arrayOf("RBY_YBR","YES"),
+            arrayOf("X_Y__X","NO"),
+            arrayOf("__","YES"),
+            arrayOf("B_RRBR","YES"),
+            arrayOf("_R","NO"),
+            arrayOf("R_YR","NO"),
+            arrayOf("RRY","NO"),
+            arrayOf("BBB_","YES"),
+            arrayOf("BBB","YES"),
+            arrayOf("_","YES"),
+            arrayOf("RBRB","NO"),
+            arrayOf("G","NO"),
+            arrayOf("GR","NO")
+    )
+
+    @Test
+    @Parameters(method = "dataBreakingRecords")
+    fun breakingRecords(scores: Array<Int>, result: Array<Int>){
+        assertEquals(result, mHackerRankSolutions.breakingRecords(scores))
+    }
+
+    fun dataBreakingRecords() = arrayOf(
+            arrayOf(arrayOf(3, 4, 21, 36, 10, 28, 35, 5, 24, 42), arrayOf(4,0))
+    )
+
+    @Test
+    @Parameters(method = "dataBirthday")
+    fun birthday(s: Array<Int>, d: Int, m: Int, result: Int){
+        assertEquals(result , mHackerRankSolutions.birthday(s,d,m))
+    }
+    fun dataBirthday() = arrayOf(
+            arrayOf( arrayOf(1,1,1,1,1,1), 3, 2, 0),
+            arrayOf(arrayOf(4),4,1,1)
+    )
 
 }
