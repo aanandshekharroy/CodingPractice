@@ -671,4 +671,81 @@ val result = mutableListOf<Int>()
 //        }
 //        return 0
 //    }
+
+    fun migratoryBirds(arr: Array<Int>): Int {
+
+        val birdMap = mutableMapOf<Int, Int>()
+        arr.forEach {
+            birdMap[it] = birdMap[it]?.plus(1)?:1
+        }
+        var maxSimilarBird = -1
+        var maxBirdId = -1
+        birdMap.forEach { key, value ->
+            if(value>maxSimilarBird){
+                maxSimilarBird = value
+            }
+            else if(value==maxSimilarBird){
+                maxBirdId = Math.min(key, maxBirdId)
+            }
+
+        }
+        return maxBirdId
+    }
+
+    // Complete the bonAppetit function below.
+    fun bonAppetit(bill: Array<Int>, k: Int, b: Int): Unit {
+        val legalSum = bill.filterIndexed { index, i ->
+            index!=k
+        }.sum()
+        if(b==legalSum/2){
+            println("Bon Appetit")
+        }else{
+            println(b-(legalSum/2))
+        }
+    }
+
+
+    fun getTotalX(a: Array<Int>, b: Array<Int>): Int {
+        /*
+         * Write your code here.
+         */
+        val maxInA = a.max()!!
+        val minInB = b.min()!!
+        var ans = 0
+        for (i in maxInA .. minInB+1){
+            val countOfFactors = a.filter {
+                i%it!=0
+            }.count()
+            if(countOfFactors==0){
+                val countOfFactorsB = b.filter {
+                    it%i!=0
+                } .count()
+                if(countOfFactorsB==0){
+                    ans++
+                }
+            }
+
+        }
+        return ans
+    }
+
+    // Complete the sockMerchant function below.
+    fun sockMerchant(n: Int, arr: Array<Int>): Int {
+        val socksMap = mutableMapOf<Int, Int>()
+        arr.forEach { i->
+            socksMap[i] = socksMap[i]?.plus(1)?:1
+        }
+        var pairCount = 0
+        socksMap.forEach { key, value ->
+            pairCount+=(value/2)
+        }
+        return pairCount
+    }
+
+    fun getMoneySpent(keyboards: Array<Int>, drives: Array<Int>, b: Int): Int {
+        /*
+         * Write your code here.
+         */
+        return 0
+    }
 }

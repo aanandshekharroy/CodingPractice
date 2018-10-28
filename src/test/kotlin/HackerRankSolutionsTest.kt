@@ -330,11 +330,22 @@ class HackerRankSolutionsTest {
     @Test
     @Parameters(method = "dataBirthday")
     fun birthday(s: Array<Int>, d: Int, m: Int, result: Int){
-        assertEquals(result , mHackerRankSolutions.birthday(s,d,m))
+//        assertEquals(result , mHackerRankSolutions.birthday(s,d,m))
     }
     fun dataBirthday() = arrayOf(
             arrayOf( arrayOf(1,1,1,1,1,1), 3, 2, 0),
-            arrayOf(arrayOf(4),4,1,1)
+            arrayOf(arrayOf(4),4,1,1),
+            arrayOf(arrayOf(1,2,1,3,2),3,2,2)
+    )
+
+    @Test
+    @Parameters(method = "dataSockMerchant")
+    fun sockMerchant(arr: Array<Int>, result: Int){
+        assertEquals(result, mHackerRankSolutions.sockMerchant(arr.size, arr))
+    }
+
+    fun dataSockMerchant() = arrayOf(
+            arrayOf(arrayOf(1 ,1 ,3 ,1 ,2 ,1 ,3 ,3 ,3 ,3 ),4)
     )
 
 }
